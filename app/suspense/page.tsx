@@ -3,6 +3,7 @@ import { TenSecondSuspense } from '@/components/TenSecondSuspense'
 import { sleep } from '@/sleep'
 import React, { Suspense } from 'react'
 
+export const dynamic = 'force-dynamic'
 const getData = async () => {
     await sleep(2)
     return 'Page slept for 2s'

@@ -1,6 +1,7 @@
 import { sleep } from '@/sleep'
 import React from 'react'
 
+export const dynamic = 'force-dynamic'
 const loadData = async () => {
     await sleep(10)
     return 'Hello from 10s suspense'
