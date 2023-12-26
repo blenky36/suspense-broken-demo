@@ -2,6 +2,7 @@ import { FiveSecondSuspense } from '@/components/FiveSecondSuspense'
 import { TenSecondSuspense } from '@/components/TenSecondSuspense'
 import { sleep } from '@/sleep'
 import React, { Suspense } from 'react'
+import { SuspenseWrapper } from './SuspenseWrapper'
 
 export const dynamic = 'force-dynamic'
 const getData = async () => {
@@ -20,6 +21,7 @@ const SuspensePage = async () => {
             <Suspense fallback={<p>Loading 10s suspense...</p>}>
                 <TenSecondSuspense />
             </Suspense>
+            <SuspenseWrapper />
         </>
     )
 }
