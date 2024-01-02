@@ -1,4 +1,4 @@
-import { FiveSecondSuspense } from '@/components/FiveSecondSuspense'
+import { DelaySuspense } from '@/components/DelaySuspense'
 import { sleep } from '@/sleep'
 import React, { Suspense } from 'react'
 
@@ -12,8 +12,11 @@ const SuspensePage = async () => {
     return (
         <div className='min-h-[100vh]'>
             <p>{data}</p>
-            <Suspense fallback={<p>Loading 5s suspense...</p>}>
-                <FiveSecondSuspense />
+            <Suspense key={'2.5s'} fallback={<p>Loading 2.5s suspense...</p>}>
+                <DelaySuspense seconds={2.5} />
+            </Suspense>
+            <Suspense key={'5s'} fallback={<p>Loading 5s suspense...</p>}>
+                <DelaySuspense seconds={5} />
             </Suspense>
         </div>
     )

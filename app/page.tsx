@@ -1,15 +1,15 @@
 import { ExampleForm } from "@/components/ExampleForm";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className='flex flex-col items-center justify-center w-full' >
+        <p>This button will submit a form on the server and then navigate to /suspense using next/navigation. Navigation gets blocked for 5s whilst the server actions on /suspense resolve. No fallback UI from the Suspense is shown.</p>
         <ExampleForm />
-        <p className="mt-12">This form will submit on the server and redirect to /suspense after 0.5s</p>
-        <p className="mt-4">/suspense is a server component resolving some data after 0.5s</p>
-        <p className="mt-4">/suspense also contains another server component wrapped in a React Suspense, which resolves after 5s</p>
-        <p className="mt-4">We should be redirected to and see the initial render of /suspense after 1s, including the fallback whilst the 5s server component resolves. </p>
-        <p className="mt-4">However, on submission the page waits for the full 5s before redirecting to /suspense with all resolved content rendered and no falback.</p>
+        <p className="mt-12">This button is a client side navigation using next/link. It behaves as expected showing fallback UI whilst the promises resolve.</p>
+        <Link href='/suspense' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded">Client Nav</Link>
+  
       </div>
     </main>
   )
