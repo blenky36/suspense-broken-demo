@@ -1,8 +1,8 @@
-### NextJS Server Components Suspense Broken
+### NextJS App Router Streaming Navigation Blocked
 
-Server components are blocking on page navigation using redirect in a server component.
+- Server components are blocking on page navigation using redirect in a server component. After requesting a redirect, the browser waits until all promises are resolved and shows no fallback UI.
 
-- This app contains a form that will submit on the server and redirect to /suspense after 0.5s.
-- The suspense page is a server component that resolves its main promise in 0.5s. It also renders a server component wrapped in Suspense that resolves after a 5s delay.
-- On form submit we should see the initial suspense page after 1s and the other server component should display the fallback until it resolves after 5s.
-- However, on submission the page waits for the full 5s before redirecting to the suspense page with all content rendered (no falback).
+- Parallel routes are blocked on client side navigation when there is no loading.tsx in the route directory. The loading.tsx of the first parallel route isn't registered, but the second one is.
+- Parallel routes are not blocked on client side navigation when there is a loading.tsx in the route directory, but it only applies to the first parallel route. Same as above point, the second parallel route loading.tsx works as expected.
+
+
