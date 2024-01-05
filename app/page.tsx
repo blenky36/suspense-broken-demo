@@ -7,11 +7,11 @@ import { ExampleForm } from "@/components/ExampleForm";
 export default function Home() {
   const { push } = useRouter()
 
-  const onSubmitSuspense = (e) => {
+  const onSubmitSuspense = (e: any) => {
     e.preventDefault()
     push('/suspense')
   }
-  const onSubmitParallel = (e) => {
+  const onSubmitParallel = (e: any) => {
     e.preventDefault()
     push('/parallel')
   }
