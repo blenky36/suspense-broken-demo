@@ -11,9 +11,9 @@ export default function Home() {
     e.preventDefault()
     push('/suspense')
   }
-  const onSubmitParallel = (e: any) => {
+  const onSubmitParallel = (e: any, path: string) => {
     e.preventDefault()
-    push('/parallel')
+    push(path)
   }
 
   return (
@@ -29,12 +29,12 @@ export default function Home() {
       </section>
       <section className='flex flex-col items-center justify-center w-full'>
         <h1>PARALLEL ROUTES</h1>
-        <p className="mb-4">This button will submit a form on the server and then navigate to /suspense using next/navigation. Navigation gets blocked for 5s whilst the server actions on /suspense resolve. No fallback UI from the Suspense is shown.</p>
-        <ExampleForm />
-        <p className="mt-12">This button is a client side navigation using next/link. It behaves as expected showing fallback UI whilst the promises resolve.</p>
+        <p className="mt-12">This button is a client side navigation using next/link. It is blocked on navigation until the first promise is resolved (5s delay).</p>
         <Link href='/parallel' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded">Link Nav</Link>
         <p className="mt-12">This button is a client side navigation using push from next/navigation useRouter. It is blocked on navigation until the first promise is resolved (5s delay).</p>
-        <button onClick={onSubmitParallel} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded">Client push nav</button>
+        <button onClick={(e) => onSubmitParallel(e, '/parallel')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded">Client push nav</button>
+        <p className="mt-12">This button is a client side navigation using push from next/navigation useRouter. It is blocked on navigation until the first promise is resolved (5s delay).</p>
+        <button onClick={(e) => onSubmitParallel(e, '/parallel-with-loading')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded">Client push nav</button>
       </section>
     </main>
   )
